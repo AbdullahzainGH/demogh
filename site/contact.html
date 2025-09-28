@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact — Your Business Name</title>
+	<meta name="description" content="Get in touch for a tailored proposal and pricing.">
+	<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+	<meta property="og:title" content="Contact — Your Business Name">
+	<meta property="og:description" content="Get in touch for a tailored proposal and pricing.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/contact.html">
+	<meta property="og:image" content="assets/img/logo.svg">
+	<meta name="twitter:card" content="summary">
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container site-header__inner">
+			<a class="brand" href="index.html" aria-label="Your Business Name home">
+				<img src="assets/img/logo.svg" alt="Brand logo">
+				<span>Your Business</span>
+			</a>
+			<nav class="nav" aria-label="Main navigation">
+				<button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+				<ul class="nav__list" id="primaryNav">
+					<li><a class="nav__link" href="index.html">Home</a></li>
+					<li><a class="nav__link" href="about.html">About</a></li>
+					<li><a class="nav__link" href="services.html">Services</a></li>
+					<li><a class="nav__link" href="contact.html" aria-current="page">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="section">
+			<div class="container">
+				<h1>Contact us</h1>
+				<p>Share your goals and constraints. We will respond within 1 business day with next steps.</p>
+				<form id="contactForm" action="#" method="post" novalidate>
+					<div class="form-row">
+						<div>
+							<label for="name">Full name</label>
+							<input type="text" id="name" name="name" autocomplete="name" required>
+						</div>
+						<div>
+							<label for="email">Email</label>
+							<input type="email" id="email" name="email" autocomplete="email" required>
+						</div>
+					</div>
+					<div>
+						<label for="message">How can we help?</label>
+						<textarea id="message" name="message" required></textarea>
+					</div>
+					<div class="form-actions">
+						<button class="button button--primary" type="submit">Send message</button>
+						<button class="button button--secondary" type="reset">Reset</button>
+					</div>
+					<p id="formStatus" class="muted" role="status" aria-live="polite" style="margin-top: 12px;"></p>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container site-footer__inner">
+			<small>© <span id="year"></span> Your Business Name</small>
+			<nav class="site-footer__nav" aria-label="Footer">
+				<a href="about.html">About</a>
+				<a href="services.html">Services</a>
+				<a href="contact.html" aria-current="page">Contact</a>
+			</nav>
+		</div>
+	</footer>
+
+	<script src="assets/js/main.js" defer></script>
+	<script>
+		(function(){
+			var form = document.getElementById('contactForm');
+			if(!form) return;
+			var statusEl = document.getElementById('formStatus');
+			form.addEventListener('submit', function(e){
+				e.preventDefault();
+				var formData = new FormData(form);
+				var name = String(formData.get('name') || '').trim();
+				var email = String(formData.get('email') || '').trim();
+				var message = String(formData.get('message') || '').trim();
+				if(!name || !email || !message){
+					statusEl.textContent = 'Please fill out all fields.';
+					return;
+				}
+				statusEl.textContent = 'Thanks! Your message has been prepared.';
+				var mailto = 'mailto:sales@example.com?subject=' + encodeURIComponent('Inquiry from ' + name) + '&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
+				window.location.href = mailto;
+			});
+		})();
+	</script>
+</body>
+</html>
