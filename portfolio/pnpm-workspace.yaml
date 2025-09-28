@@ -1,0 +1,6 @@
+ignoredBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - contentlayer
+  - esbuild
+  - protobufjs
+  - unrs-resolver
