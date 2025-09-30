@@ -17,6 +17,9 @@ export default function Navbar() {
           <Link href="/contact" className="hover:underline">
             Contact
           </Link>
+          <Link href="/login" className="hover:underline">
+            Login
+          </Link>
         </div>
       </nav>
     </header>
